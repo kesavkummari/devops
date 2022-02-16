@@ -1,0 +1,7 @@
+<distributionManagement>
+  <repository>
+    <id>eficens-eficens-snapshot-lib</id>
+    <name>eficens-eficens-snapshot-lib</name>
+    <url>https://eficens-156779398815.d.codeartifact.us-east-1.amazonaws.com/maven/eficens-snapshot-lib/</url>
+  </repository>
+</distributionManagement>
