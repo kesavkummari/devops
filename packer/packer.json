@@ -1,6 +1,6 @@
 {
     "variables": {
-        "packer_profile": "eficens-packer",
+        "packer_profile": "packer-ec2-s3",
         "application_name": "eficens",
         "application_version": "1.0.0",
         "region": "us-east-1",
