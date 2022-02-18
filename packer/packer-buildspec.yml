@@ -5,13 +5,12 @@ phases:
     commands:
       - echo "Installing HashiCorp Packer..."
       - curl -O https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip
-      - unzip -fo packer_1.6.0_linux_amd64*.zip
+      - unzip packer_1.6.0_linux_amd64.zip
+      - mv packer /usr/local/bin/
+      - ls -lrt /usr/local/bin/packer
       - curl -qL -o jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && chmod +x ./jq
-      - mv packer /usr/local/bin
-      #- mv /usr/local/bin/packer_* /usr/local/bin/packer
       - mv jq /usr/local/bin 
       - pwd
-      - ls -lrt
       - ls -lrt $CODEBUILD_SRC_DIR
       - cd $CODEBUILD_SRC_DIR/packer/
       - packer validate packer.json
@@ -23,6 +22,9 @@ phases:
       - aws configure set aws_access_key_id `jq -r '.AccessKeyId' aws_credentials.json`
       - aws configure set aws_secret_access_key `jq -r '.SecretAccessKey' aws_credentials.json`
       - aws configure set aws_session_token `jq -r '.Token' aws_credentials.json`
+      - pwd
+      - ls -lrt $CODEBUILD_SRC_DIR
+      - cd $CODEBUILD_SRC_DIR/packer/
       - packer build packer.json
   post_build:
     commands:
